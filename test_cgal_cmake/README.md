@@ -93,7 +93,7 @@ zfb@wsl:~/$
             "name": "(gdb) 启动",
             "type": "cppdbg",
             "request": "launch",
-            // 此键修改为如下内容
+            // edit the following option
             "program": "${command:cmake.launchTargetPath}",
             "args": [],
             "stopAtEntry": false,
@@ -121,7 +121,7 @@ zfb@wsl:~/$
 [cmake] -- Build files have been written to: /home/zfb/surface_reconstruction/test/build
 ```
 然后点击状态栏的`CMake Tools`工具的虫子图标（Debug的标识），软件会自动运行`build`目录下的`Makefile`文件，并自动执行`make`命令，再自动启动生成的可执行文件，自动运行并停在断点处等待调试  
-**如果代码使用stream写入处理后的点云数据到文件，一定要记得刷新缓冲区，否则如果在写入的下一行去读取文件，大概率会得到一个空文件**  
+**如果代码使用stream写入处理后的点云数据到文件，一定要记得刷新缓冲区，否则如果在写入的下一行去读取文件，大概率会得到一个空文件。官方库已经合并修复此问题的请求： [flush the buffer](https://github.com/CGAL/cgal/pull/4865)**  
 ```cpp
 #define CGAL_USE_BASIC_VIEWER
 #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
